@@ -29,11 +29,14 @@ export default Vue.extend({
         uername: "justinfan1",
         password: ""
       },
-      channels: ["esl_csgo"]
+      channels: ["soaryn"]
     };
     let client =  new tmi.client(options);
-    client.on("message", (target: any, context: any, msg: any, self: any) => {
-      console.log(msg); 
+    client.on("message", (target, context, msg, self) => {
+      console.log({
+        msg: msg,
+        emotes: context.emotes
+      }); 
     });
 
     client.on("connected", (addr, port) => { console.log(`* Connected to ${addr}:${port}`);
