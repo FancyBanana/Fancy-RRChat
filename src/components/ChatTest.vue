@@ -6,7 +6,6 @@
 
 <script lang="ts">
 import Vue from "vue";
-import tmi from "twitch-js"
 
 export default Vue.extend({
   name: "ChatTest",
@@ -18,31 +17,7 @@ export default Vue.extend({
   },
   mounted() {
     console.log("mounted");
-    let options = {
-      options:{
-        debug: false
-      },
-      connection:{
-        secure: true
-      },
-      identity: {
-        uername: "justinfan1",
-        password: ""
-      },
-      channels: ["soaryn"]
-    };
-    let client =  new tmi.client(options);
-    client.on("message", (target, context, msg, self) => {
-      console.log({
-        msg: msg,
-        emotes: context.emotes
-      }); 
-    });
-
-    client.on("connected", (addr, port) => { console.log(`* Connected to ${addr}:${port}`);
-    });
-
-    client.connect();
+    
   }
 });
 </script>
